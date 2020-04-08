@@ -10,7 +10,7 @@ namespace Amccloy.TimerUtils
         /// <summary>
         /// The action that will occur when the timer expires
         /// </summary>
-        Action Action { get; set; }
+        Action? Action { get; set; }
         
         /// <summary>
         /// If true, then the timer will automatically restart when it expires

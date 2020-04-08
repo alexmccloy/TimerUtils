@@ -6,7 +6,7 @@ namespace Amccloy.TimerUtils
     /// <summary>
     /// Implementation of a timer that uses a System.Timer.Timer and just kinda does what you would expect tbh.
     /// </summary>
-    public class DefaultTimer : ITimer
+    public class DefaultTimer : ITimer, IDisposable
     {
         private Timer _timer;
         
@@ -21,12 +21,18 @@ namespace Amccloy.TimerUtils
         /// <inheritdoc cref="ITimer"/>
         public void Start(TimeSpan duration)
         {
+            if (Action == null)
+            {
+                throw new TimerException("Cannot start the timer when the Action has not been set");
+            }
+            
             _duration = duration;
             
             _timer = new Timer();
             _timer.Interval = _duration.TotalMilliseconds;
             _timer.Elapsed += TimerElapsed;
         }
+        
         /// <inheritdoc cref="ITimer"/>
         public void Start(int milliseconds)
         {
@@ -42,14 +48,18 @@ namespace Amccloy.TimerUtils
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             //TODO implement locking strategy
-            _timer.Stop();
-            Action.Invoke();
+            _timer?.Stop();
+            Action?.Invoke();
 
             if (Repeats)
             {
-                _timer.Start();
+                _timer?.Start();
             }
         }
 
+        public void Dispose()
+        {
+            _timer.Dispose();
+        }
     }
 }
