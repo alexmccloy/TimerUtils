@@ -13,5 +13,4 @@
         <RepositoryType>Git</RepositoryType>
         <Version>1.0.0.0</Version>
     </PropertyGroup>
-
 </Project>

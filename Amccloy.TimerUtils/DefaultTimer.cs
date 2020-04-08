@@ -11,7 +11,7 @@ namespace Amccloy.TimerUtils
         private Timer _timer;
         
         /// <inheritdoc cref="ITimer"/>
-        public Action Action { get; set; }
+        public Action? Action { get; set; }
         
         /// <inheritdoc cref="ITimer"/>
         public bool Repeats { get; set; }
@@ -25,7 +25,7 @@ namespace Amccloy.TimerUtils
             
             _timer = new Timer();
             _timer.Interval = _duration.TotalMilliseconds;
-            _timer.Elapsed += TimerElasped;
+            _timer.Elapsed += TimerElapsed;
         }
         /// <inheritdoc cref="ITimer"/>
         public void Start(int milliseconds)
@@ -39,7 +39,7 @@ namespace Amccloy.TimerUtils
             _timer.Stop();
         }
 
-        private void TimerElasped(object sender, ElapsedEventArgs e)
+        private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             //TODO implement locking strategy
             _timer.Stop();
