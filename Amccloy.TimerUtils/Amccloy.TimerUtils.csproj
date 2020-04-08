@@ -8,7 +8,7 @@
         <Description>Wrapper around a standard library timer to assist with unit testing, plus some additional extension methods.</Description>
         <Copyright>Alex McCloy</Copyright>
         <PackageProjectUrl>https://github.com/alexmccloy/TimerUtils</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/alexmccloy/TimerUtils/master/LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/alexmccloy/TimerUtils</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <Version>1.0.0.0</Version>
